@@ -1,16 +1,43 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import { Component } from "react";
+// import { Counter } from "./Counter/counter";
+import { Header } from "./Header/header";
+import { Modal } from "./Modal/Modal";
+import ToDoList from './ToDoList/ToDoList'
+
+
+export class App extends Component {
+	state = { 
+    isShowModal: false
+  }
+
+  toggleModal = () => {
+    this.setState((prev) => {
+      return{
+        isShowModal: !prev.isShowModal,
+      }
+      
+    })
+  }
+		render() {
+		return (
+    <>
+				<Header toggleModal={this.toggleModal} />
+				{/* <Counter /> */}
+        <ToDoList/>
+        {this.state.isShowModal&&<Modal toggleModal={this.toggleModal}>kjnfg</Modal>}
+        
+    </>
+		)
+	}
+}
+
+
+// export const App = () => {
+// 	return (
+// 		<>
+// 			<Header/>
+// 			<Counter />
+			
+// 		</>
+// 	)
+// }
